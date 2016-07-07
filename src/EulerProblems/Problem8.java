@@ -1,10 +1,5 @@
 package EulerProblems;
 
-import java.util.AbstractQueue;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Queue;
-import java.util.Scanner;
 
 /**
  * Created by cvalencia on 6/7/16.
@@ -56,10 +51,38 @@ public class Problem8 {
             "05886116467109405077541002256983155200055935729725" +
             "71636269561882670428252483600823257530420752963450";
 
+    private static long highTotal;
+    private static String highSub;
+    private static String sub;
 
+
+
+    //New thought. Break seq into 13 character substring, test substring for new max, if max, save substring and max. Increment by 1.
+    //Additional thought to save runtime, cut up first substring, then divide from that substring the first character in the seq and multiply by the next (14th)
+    // ^^ This will make it so you're not testing, cutting, testing, updating, cutting, testing, etc..
     public static void main (String args[]){
-        for ( int i = 0; i < seq.length() - 12; i++) {
+        long total = 1;
+        for(int i = 0; i < 13; i++) {
+//            System.out.println(seq.charAt(i));
+            total = total * Integer.parseInt(Character.toString(seq.charAt(i)));
+//            System.out.println("Total: " + total);
+        }
 
+        highTotal = total;
+        highSub = seq.substring(0, 13);
+        sub = seq.substring(0,13);
+
+        //Problem: check for 0s
+        for (int i = 13; i < seq.length(); i++) {
+            int out = Integer.valueOf(Character.toString(sub.charAt(0)));
+            int in = Integer.valueOf(Character.toString(seq.charAt(i)));
+            total = (total * in) /out;
+            sub = sub.substring(1) + seq.charAt(i);
+            System.out.println(out);
+            System.out.println(sub);
+            System.out.println(total);
+            System.out.println(in);
+            //if ()
         }
     }
 }

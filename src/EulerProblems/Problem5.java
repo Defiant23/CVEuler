@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Scanner;
-import java.math.BigInteger;
 
 /**
  * Created by cvalencia on 6/2/16.
